@@ -5,8 +5,8 @@ set -euo pipefail
 # It is not a supported installer. Modifications to it — or requests for
 # modifications — will not be approved.
 #
-# Links all skills in the repository into the local skill directories used by
-# each agent harness:
+# Links promoted skills in the repository into the local skill directories used
+# by each agent harness:
 #   - ~/.claude/skills  — Claude Code
 #   - ~/.agents/skills  — pi and other Agent-Skills-standard harnesses
 # Each entry is a symlink into this repo, so a `git pull` is all that's needed
@@ -15,14 +15,16 @@ set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
 
-# Collect the repo's skills once, link into every destination.
+# Collect promoted skills once, link into every destination. Draft, deprecated,
+# personal, and miscellaneous skills are intentionally not installed into agent
+# harness skill directories by this development helper.
 names=()
 srcs=()
 while IFS= read -r -d '' skill_md; do
   src="$(dirname "$skill_md")"
   names+=("$(basename "$src")")
   srcs+=("$src")
-done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/deprecated/*' -print0)
+done < <(find "$REPO/skills/engineering" "$REPO/skills/productivity" -name SKILL.md -not -path '*/node_modules/*' -print0)
 
 for DEST in "${DESTS[@]}"; do
   # If $DEST is a symlink that resolves into this repo, we'd end up writing the

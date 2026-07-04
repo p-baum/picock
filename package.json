@@ -3,11 +3,36 @@
   "version": "1.0.1",
   "private": true,
   "description": "Matt Pocock's agent skills for real engineering",
+  "keywords": ["pi-package"],
   "repository": {
     "type": "git",
     "url": "https://github.com/mattpocock/skills"
   },
   "license": "MIT",
+  "pi": {
+    "skills": [
+      "./skills/engineering/ask-matt",
+      "./skills/engineering/diagnosing-bugs",
+      "./skills/engineering/grill-with-docs",
+      "./skills/engineering/triage",
+      "./skills/engineering/improve-codebase-architecture",
+      "./skills/engineering/setup-matt-pocock-skills",
+      "./skills/engineering/tdd",
+      "./skills/engineering/to-issues",
+      "./skills/engineering/to-prd",
+      "./skills/engineering/implement",
+      "./skills/engineering/prototype",
+      "./skills/engineering/research",
+      "./skills/engineering/domain-modeling",
+      "./skills/engineering/codebase-design",
+      "./skills/engineering/code-review",
+      "./skills/productivity/grill-me",
+      "./skills/productivity/grilling",
+      "./skills/productivity/handoff",
+      "./skills/productivity/teach",
+      "./skills/productivity/writing-great-skills"
+    ]
+  },
   "scripts": {
     "changeset": "changeset",
     "version": "changeset version"

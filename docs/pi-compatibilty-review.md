@@ -1,6 +1,6 @@
 # Pi compatibility review of Matt Pocock upstream skills
 
-Reviewed upstream remote commit `272f99b22574f50e4266791c86b9302682970e23` in a detached worktree. Current changes on this fork/main were not reviewed.
+Reviewed upstream remote commit `272f99b22574f50e4266791c86b9302682970e23`. 
 
 Pi references used: Pi skill/package docs and README from the installed `@earendil-works/pi-coding-agent` docs. Key Pi facts for this review:
 
