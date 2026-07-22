@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=tdd
@@ -18,7 +18,7 @@ It will **not** write all the tests up front. Batching the tests first ("horizon
 
 ## When to reach for it
 
-Type `/tdd`, or the agent reaches for it automatically when a task fits — building a feature or fixing a bug test-first, or when you say "red-green-refactor".
+In Pi, invoke it with `/skill:tdd`. In Claude Code and harnesses where skills.sh installs bare commands, use `/tdd`. The agent can also reach for it automatically when a task fits — building a feature or fixing a bug test-first, or when you say "red-green-refactor".
 
 Reach for it when there's a concrete behaviour to build and you want tests that survive a refactor. If the behaviour isn't pinned down yet, settle the spec first — for that, use [to-spec](https://aihero.dev/skills-to-spec). When the work is really about the shape of the interface rather than the tests, use [codebase-design](https://aihero.dev/skills-codebase-design); `tdd` calls into it for the deep-module vocabulary during planning.
 

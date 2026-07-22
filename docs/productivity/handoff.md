@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=handoff
@@ -18,7 +18,7 @@ It does **not** re-state what already lives elsewhere. Anything captured in a sp
 
 ## When to reach for it
 
-You invoke this by typing `/handoff` — the agent won't reach for it on its own. Pass a note about what the next session is for and the document is tailored to it.
+In Pi, invoke it with `/skill:handoff`. In Claude Code and harnesses where skills.sh installs bare commands, use `/handoff`. The agent won't reach for it on its own. Pass a note about what the next session is for and the document is tailored to it.
 
 Reach for this when a conversation has gone long enough that its context is at risk — you're near a context limit, wrapping for the day, or deliberately handing the work to another agent — and you want the thread preserved without dragging the whole transcript along.
 

@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=improve-codebase-architecture
@@ -20,7 +20,7 @@ Unless you point it at a specific area, it also scopes itself to where developme
 
 ## When to reach for it
 
-You invoke this by typing `/improve-codebase-architecture` — the agent won't reach for it on its own.
+In Pi, invoke it with `/skill:improve-codebase-architecture`. In Claude Code and harnesses where skills.sh installs bare commands, use `/improve-codebase-architecture`. The agent won't reach for it on its own.
 
 Reach for it as a periodic health check: every few days, or whenever a codebase has started to feel like it takes too much bouncing between small modules to understand one concept. It reads the existing architecture and proposes where to deepen it. If you already know the module you want to redesign and just need the vocabulary to think it through, use [codebase-design](https://aihero.dev/skills-codebase-design) instead — this skill is the survey that finds the candidates; that one is the design bench.
 

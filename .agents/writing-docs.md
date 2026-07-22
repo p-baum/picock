@@ -12,11 +12,11 @@ There is no H1 — the published page takes its title from the slug.
 
 ## Page structure
 
-Fill the template below. The **fixed frame** (Quickstart block, source link, `## What it does`, `## When to reach for it`, `## Where it fits`) appears on every page. The **adaptable middle** — `## Prerequisites` and the free-form substance sections — carries only what this particular skill earns; delete the rest.
+Fill the template below. The **fixed frame** (skills.sh install block, source link, `## What it does`, `## When to reach for it`, `## Where it fits`) appears on every page. The **adaptable middle** — `## Prerequisites` and the free-form substance sections — carries only what this particular skill earns; delete the rest.
 
 <page-template>
 
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=<name>
@@ -36,7 +36,7 @@ One or two plain-language paragraphs. Lead with the skill's one-sentence job, th
 
 How and when you reach for the skill — two beats, both effectively always present:
 
-- **Invocation mode.** State whether you type it or the agent fires it. A user-invoked skill: "You invoke this by typing `/<name>` — the agent won't reach for it on its own." A model-invoked skill: "Type `/<name>`, or the agent reaches for it automatically when a task fits."
+- **Invocation mode.** State both harness syntaxes and whether the agent fires it. A user-invoked skill: "In Pi, invoke it with `/skill:<name>`. In Claude Code and harnesses where skills.sh installs bare commands, use `/<name>`. The agent won't reach for it on its own." A model-invoked skill: "In Pi, invoke it with `/skill:<name>`. In Claude Code and harnesses where skills.sh installs bare commands, use `/<name>`. The agent can also reach for it automatically when a task fits."
 - **Trigger boundary.** The index entry: "reach for this when …". Where the skill is confusable with a sibling, add the other half — "for <X> instead, use [<sibling>](https://aihero.dev/skills-<sibling>)."
 
 ## Prerequisites
@@ -72,7 +72,9 @@ Always present. Situate the skill in the system in a sentence or two:
 ## Done when
 
 - The page exists at `docs/<bucket>/<name>.md`, and no stale page survives a rename or bucket move.
-- The Quickstart block and source link name the correct bucket and skill; the update line names the skill.
+- The install block is clearly identified as skills.sh installation, its `--skill=` argument is not described as invocation, and the source link names the correct bucket and skill.
+- The invocation line gives Pi's `/skill:<name>` syntax and the bare `/<name>` syntax used by Claude Code and skills.sh-installed harnesses.
+- Cross-skill dependencies use harness-neutral skill names, never bare slash commands.
 - `## What it does` states the defining constraint, as plain prose rather than a labelled aside.
 - `## When to reach for it` states invocation mode and the trigger boundary.
 - `## Where it fits` names the role and links to `ask-matt`.
