@@ -21,7 +21,7 @@ This is a prompt-driven skill, not a deterministic script. Explore, present what
 Look at the current repo to understand its starting state. Read whatever exists; don't assume:
 
 - `git remote -v` and `.git/config` — is this a GitHub repo? Which one?
-- `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already an `## Agent skills` section in either?
+- `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already an `## Agent skills` section in either? If both exist, resolve symlinks and determine whether they are two paths to the same file or distinct files.
 - `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
 - `docs/adr/` and any `src/*/docs/adr/` directories
 - `docs/agents/` — does this skill's prior output already exist?
@@ -73,13 +73,15 @@ Let them edit before writing.
 
 **Pick the file to edit:**
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create — don't pick for them.
+Use the active harness, not the files already present, as the primary signal:
 
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa) — always edit the one that's already there.
+- In Pi, edit or create `AGENTS.md`. Preserve a distinct `CLAUDE.md` unchanged.
+- In Claude Code, edit or create `CLAUDE.md`. Preserve a distinct `AGENTS.md` unchanged.
+- In another or unknown harness, use the sole existing file when exactly one exists. If both exist as distinct files, or neither exists, ask the user which file to update or create.
 
-If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
+If `AGENTS.md` and `CLAUDE.md` resolve to the same file through a symlink, treat them as one shared file and edit it once. Use the active harness's conventional path when referring to it in the preview and completion message.
+
+If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections or to the other harness's distinct file.
 
 The block:
 
