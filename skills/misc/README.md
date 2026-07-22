@@ -1,6 +1,6 @@
 # Misc
 
-Tools I keep around but rarely use — not promoted in the plugin.
+Tools I keep around but rarely use — not promoted in the plugin. The `misc` bucket is excluded from Pi package discovery and the development linker, so these skills must be installed or loaded deliberately.
 
 - **[git-guardrails-claude-code](./git-guardrails-claude-code/SKILL.md)** — Set up Claude Code hooks to block dangerous git commands; these hooks do not protect Pi.
 - **[git-guardrails-pi](./git-guardrails-pi/SKILL.md)** — Set up a Pi `tool_call` extension to block dangerous git commands before they execute.
