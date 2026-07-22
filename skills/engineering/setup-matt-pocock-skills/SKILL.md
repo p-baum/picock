@@ -48,6 +48,15 @@ Default posture: these skills were designed for GitHub. If a `git remote` points
 
 Record the choice in `docs/agents/issue-tracker.md`. The GitHub and GitLab templates carry a "PRs as a request surface" flag, defaulted **off** — leave it off and don't raise it; a user who wants external PRs in the triage queue can flip the flag in the file later.
 
+Every tracker configuration must retain equivalent **completion gates**. These are requirements before closing implementation work as completed, not optional reporting fields:
+
+1. Check every acceptance criterion individually and record evidence for each.
+2. Prove the implementation landed on the intended target branch with a merged PR/MR, a target-branch-reachable direct commit, or an explicitly identified superseding implementation.
+3. Record reproducible validation commands or procedures and their observed results; unsupported prose such as "tests pass" is insufficient.
+4. For packaged or promoted skills, record distribution/release status as complete, pending, unnecessary, or blocked. A source change alone does not prove distribution.
+5. Add an explanatory note before every issue and PR/MR closure, including completed, duplicate, superseded, declined, abandoned, and unmerged closures.
+6. Require independent review for owner-authored PRs/MRs. If none is available, document why and complete the template's self-review checklist.
+
 **Section B — Triage label vocabulary.** Skip this section entirely if the `triage` skill isn't installed (exploration told you) — an uninstalled skill needs no labels.
 
 If it is installed, ask exactly one question:
@@ -109,7 +118,9 @@ Then write the docs files using the seed templates in this skill folder as a sta
 - [triage-labels.md](./triage-labels.md) — label mapping (only if `triage` is installed)
 - [domain.md](./domain.md) — domain doc consumer rules + layout
 
-For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
+For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description and include completion gates equivalent to those above.
+
+Before finishing, verify the generated tracker file still contains every completion gate from its seed template; do not shorten them into general advice.
 
 ### 5. Done
 

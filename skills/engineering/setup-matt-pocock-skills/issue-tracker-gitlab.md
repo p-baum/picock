@@ -26,6 +26,18 @@ When set to `yes`, MRs run through the same labels and states as issues, using t
 
 Unlike GitHub, GitLab numbers issues and MRs separately, so `#42` is unambiguous once you know which surface the maintainer means.
 
+## Completion gates
+
+Before closing implementation work as completed:
+
+- **Acceptance criteria:** Check every criterion individually and record pass/fail evidence.
+- **Landing evidence:** Identify the intended target branch and prove the change reached it through a merged MR, a direct commit reachable from that branch, or an explicitly linked superseding implementation. Inspect the MR with `glab mr view <number>` or the GitLab API; a closed, unmerged MR is not completion.
+- **Reproducible validation:** Record the exact commands or procedures run and their observed results. Do not substitute unsupported prose such as "tests pass."
+- **Distribution status:** For packaged or promoted skills, record whether distribution/release is complete, pending, unnecessary, or blocked, including relevant manifest checks and release MR/tag. A source commit alone does not prove distribution.
+- **Review:** Owner-authored MRs require an approving independent review. If no reviewer is available, document the exception and self-review the diff scope, each acceptance criterion, validation results, target branch, distribution impact, and unresolved risks.
+
+Every issue and MR closure requires an explanatory note first, including completed, duplicate, superseded, declined, abandoned, and unmerged closures. Post it with `glab issue note` or `glab mr note` before the corresponding close command. The note must identify the outcome and, when applicable, link the merged MR, target-branch commit, or superseding implementation.
+
 ## When a skill says "publish to the issue tracker"
 
 Create a GitLab issue.

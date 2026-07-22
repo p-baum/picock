@@ -71,6 +71,35 @@ assert.deepEqual(
   "Claude plugin skills must match blacklist-based discovery",
 );
 
+const trackerTemplateDirectory = join(
+  root,
+  "skills/engineering/setup-matt-pocock-skills",
+);
+const completionGateMarkers = [
+  "## Completion gates",
+  "Acceptance criteria",
+  "Landing evidence",
+  "Reproducible validation",
+  "Distribution status",
+  "Review",
+];
+for (const tracker of ["github", "gitlab", "local"]) {
+  const path = join(trackerTemplateDirectory, `issue-tracker-${tracker}.md`);
+  const template = await readFile(path, "utf8");
+  for (const marker of completionGateMarkers) {
+    assert.ok(
+      template.includes(marker),
+      `${relative(root, path)} must include completion gate: ${marker}`,
+    );
+  }
+}
+
+const setupSkill = await readFile(join(trackerTemplateDirectory, "SKILL.md"), "utf8");
+assert.ok(
+  setupSkill.includes("include completion gates equivalent to those above"),
+  "setup skill must preserve completion gates for custom trackers",
+);
+
 const temporaryHome = await mkdtemp(join(tmpdir(), "picock-skill-validation-"));
 try {
   const result = spawnSync("bash", [join(root, "scripts/link-skills.sh")], {

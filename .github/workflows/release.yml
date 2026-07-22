@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate distributed skills
+        run: npm run validate:skills
+
       - name: Create Version Pull Request
         uses: changesets/action@v1
         with:

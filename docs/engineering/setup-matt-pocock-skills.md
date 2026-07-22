@@ -12,7 +12,7 @@ npx skills update setup-matt-pocock-skills
 
 ## What it does
 
-`setup-matt-pocock-skills` teaches one repo how the engineering skills should behave in it — where issues live, what the triage labels are called, and where the domain docs sit — and records those answers as **config** the other skills read.
+`setup-matt-pocock-skills` teaches one repo how the engineering skills should behave in it — where issues live, what evidence is required before work closes, what the triage labels are called, and where the domain docs sit — and records those answers as **config** the other skills read.
 
 It writes config, it does not hard-code behaviour. The engineering chain assumes three files under `docs/agents/` exist; this skill is the one-time bootstrap that produces them, discovered from your actual repo (`git remote`, existing labels, existing `CONTEXT.md`) and confirmed with you rather than guessed. It is prompt-driven — explore, present what it found, confirm, then write — not a deterministic scaffold.
 
@@ -26,7 +26,7 @@ Reach for it **once per repo, before the first use of any other engineering skil
 
 It leads each with a recommended answer you can accept in a word, and skips whatever it can already infer — so most runs are a couple of quick confirmations:
 
-- **Issue tracker** — where work is tracked, so `triage`/`to-spec`/`to-tickets` know whether to call `gh`, `glab`, write markdown under `.scratch/`, or follow a workflow you describe. GitHub, GitLab, local markdown, or other. (It proposes the one that matches your `git remote`.)
+- **Issue tracker** — where work is tracked, so `triage`/`to-spec`/`to-tickets` know whether to call `gh`, `glab`, write markdown under `.scratch/`, or follow a workflow you describe. GitHub, GitLab, local markdown, or other. (It proposes the one that matches your `git remote`.) The resulting config also carries equivalent **completion gates** on every tracker: criterion-by-criterion evidence, proof the implementation reached its target branch, reproducible validation, explicit distribution status, explanatory closure notes, and independent review or a documented self-review exception.
 - **Triage labels** — asked only if the `triage` skill is installed, and then just: keep the default labels (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`)? Say no only if your tracker already uses other names, so `triage` applies real ones instead of creating duplicates.
 - **Domain docs** — assumed single-context (one `CONTEXT.md` + `docs/adr/` at the root), which fits almost every repo; it only raises a multi-context map when it spots monorepo signals.
 
@@ -37,6 +37,8 @@ The output is a set of files under `docs/agents/` — `issue-tracker.md`, `domai
 - `issue-tracker.md` and `domain.md` land under `docs/agents/` (plus `triage-labels.md` when `triage` is installed), and an `## Agent skills` section appears in your `CLAUDE.md` or `AGENTS.md`.
 - The tracker it proposes matches your real `git remote`, and the labels match strings that already exist in your repo.
 - Afterwards, `triage` and `to-tickets` act on the right place with the right labels instead of asking or guessing.
+- Completed work records each acceptance criterion, target-branch landing evidence, reproducible checks, and distribution status.
+- Every closure explains its outcome, and owner-authored changes show independent review or a documented exception with a self-review checklist.
 
 ## Where it fits
 

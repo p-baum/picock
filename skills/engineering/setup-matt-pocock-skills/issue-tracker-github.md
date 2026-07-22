@@ -25,6 +25,18 @@ When set to `yes`, PRs run through the same labels and states as issues, using t
 
 GitHub shares one number space across issues and PRs, so a bare `#42` may be either — resolve with `gh pr view 42` and fall back to `gh issue view 42`.
 
+## Completion gates
+
+Before closing implementation work as completed:
+
+- **Acceptance criteria:** Check every criterion individually and record pass/fail evidence.
+- **Landing evidence:** Identify the intended target branch and prove the change reached it through a merged PR, a direct commit reachable from that branch, or an explicitly linked superseding implementation. For PRs, inspect `gh pr view <number> --json state,mergedAt,baseRefName,mergeCommit`; a closed, unmerged PR is not completion.
+- **Reproducible validation:** Record the exact commands or procedures run and their observed results. Do not substitute unsupported prose such as "tests pass."
+- **Distribution status:** For packaged or promoted skills, record whether distribution/release is complete, pending, unnecessary, or blocked, including relevant manifest checks and release PR/tag. A source commit alone does not prove distribution.
+- **Review:** Owner-authored PRs require an approving independent review. If no reviewer is available, document the exception and self-review the diff scope, each acceptance criterion, validation results, target branch, distribution impact, and unresolved risks.
+
+Every issue and PR closure requires an explanatory comment first, including completed, duplicate, superseded, declined, abandoned, and unmerged closures. Use `gh issue close <number> --comment "..."`; for a PR, comment with `gh pr comment` before `gh pr close`. The note must identify the outcome and, when applicable, link the merged PR, target-branch commit, or superseding implementation.
+
 ## When a skill says "publish to the issue tracker"
 
 Create a GitHub issue.
