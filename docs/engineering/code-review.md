@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=code-review
@@ -16,9 +16,9 @@ npx skills update code-review
 
 ## When to reach for it
 
-Type `/code-review`, or the agent reaches for it automatically when you ask to review a branch, a PR, work-in-progress changes, or anything "since X".
+In Pi, invoke it with `/skill:code-review`. In Claude Code and harnesses where skills.sh installs bare commands, use `/code-review`. The agent can also reach for it automatically when you ask to review a branch, a PR, work-in-progress changes, or anything "since X".
 
-Reach for this when there is a diff to judge against a known-good point and you want the two questions — *is it built right?* and *is it the right thing?* — answered independently. It runs at the end of the build loop; for actually writing the code test-first, use [tdd](https://aihero.dev/skills-tdd), and for building a whole spec into code use [implement](https://aihero.dev/skills-implement), which runs its own `/code-review` pass before committing.
+Reach for this when there is a diff to judge against a known-good point and you want the two questions — *is it built right?* and *is it the right thing?* — answered independently. It runs at the end of the build loop; for actually writing the code test-first, use [tdd](https://aihero.dev/skills-tdd), and for building a whole spec into code use [implement](https://aihero.dev/skills-implement), which runs its own `code-review` pass before committing.
 
 ## Prerequisites
 

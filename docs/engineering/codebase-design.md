@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=codebase-design
@@ -18,7 +18,7 @@ It is a **language, not a procedure**. It doesn't restructure your code or hand 
 
 ## When to reach for it
 
-Type `/codebase-design`, or the agent reaches for it automatically when a task fits.
+In Pi, invoke it with `/skill:codebase-design`. In Claude Code and harnesses where skills.sh installs bare commands, use `/codebase-design`. The agent can also reach for it automatically when a task fits.
 
 Reach for it when you're designing or improving a module's interface, hunting for deepening opportunities, deciding where a seam goes, or making code more testable and AI-navigable. Other skills pull it in whenever they need the deep-module vocabulary. If you want to sharpen the project's *domain* terms rather than its module design, use [domain-modeling](https://aihero.dev/skills-domain-modeling) instead; to run a whole architecture pass over an existing codebase, use [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture).
 

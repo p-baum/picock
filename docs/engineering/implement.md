@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=implement
@@ -18,7 +18,7 @@ It does **not** decide what to build. The spec is already settled and the seams 
 
 ## When to reach for it
 
-You invoke this by typing `/implement` — the agent won't reach for it on its own.
+In Pi, invoke it with `/skill:implement`. In Claude Code and harnesses where skills.sh installs bare commands, use `/implement`. The agent won't reach for it on its own.
 
 Reach for it once the work is written down as a spec or split into tickets and you're ready to turn that into code. If the spec doesn't exist yet, write it first — for that, use [to-spec](https://aihero.dev/skills-to-spec), or [to-tickets](https://aihero.dev/skills-to-tickets) to break a spec into tickets. If you just want to build something test-first without a full spec, drop to [tdd](https://aihero.dev/skills-tdd) directly.
 

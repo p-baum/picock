@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=grilling
@@ -18,7 +18,7 @@ It asks **one question at a time** and waits for your answer before the next —
 
 ## When to reach for it
 
-Type `/grilling`, or the agent reaches for it automatically when a task fits — this is the underlying primitive, not a user-only entry point.
+In Pi, invoke it with `/skill:grilling`. In Claude Code and harnesses where skills.sh installs bare commands, use `/grilling`. The agent can also reach for it automatically when a task fits — this is the underlying primitive, not a user-only entry point.
 
 Reach for it when a plan or design still has soft spots and you want them surfaced before code is written. In practice you usually invoke it through one of its two wrappers rather than by name: for a plain grilling session use [grill-me](https://aihero.dev/skills-grill-me); to have the session also write ADRs and a glossary as it goes, use [grill-with-docs](https://aihero.dev/skills-grill-with-docs).
 

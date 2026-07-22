@@ -1,4 +1,4 @@
-Quickstart:
+Install with skills.sh:
 
 ```bash
 npx skills add mattpocock/skills --skill=setup-matt-pocock-skills
@@ -18,7 +18,7 @@ It writes config, it does not hard-code behaviour. The engineering chain assumes
 
 ## When to reach for it
 
-You invoke this by typing `/setup-matt-pocock-skills` — the agent won't reach for it on its own.
+In Pi, invoke it with `/skill:setup-matt-pocock-skills`. In Claude Code and harnesses where skills.sh installs bare commands, use `/setup-matt-pocock-skills`. The agent won't reach for it on its own.
 
 Reach for it **once per repo, before the first use of any other engineering skill**. If [triage](https://aihero.dev/skills-triage), [to-spec](https://aihero.dev/skills-to-spec), or [to-tickets](https://aihero.dev/skills-to-tickets) start guessing where your issues live or applying labels that don't exist, they haven't been set up here yet. Re-run it only to switch issue trackers or start over — day-to-day tweaks are just edits to `docs/agents/*.md`.
 
