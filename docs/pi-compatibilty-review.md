@@ -86,7 +86,7 @@ Recommended fix: add a Pi quickstart after adding a Pi manifest, e.g. `pi instal
 
 ### Low: Claude-specific frontmatter fields are ignored by Pi
 
-Some skills use `argument-hint` (`handoff`, `teach`, `claude-handoff`, `loop-me`). Pi ignores unknown frontmatter fields, so this is not a load failure, but Pi users will not get the intended command argument hint unless it is expressed elsewhere.
+Some skills use `argument-hint` (`handoff`, `teach`, `claude-handoff`, `loop-me`). Pi ignores unknown frontmatter fields, so this is not a load failure. The promoted `handoff` and `teach` skills therefore include Pi-facing usage examples in their instructions and docs. The draft `claude-handoff` and `loop-me` skills are excluded from Pi distribution by the `!skills/in-progress/**` package manifest entry.
 
 ## Positive compatibility notes
 

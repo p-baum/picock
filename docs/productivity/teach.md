@@ -18,7 +18,7 @@ It does **not** teach from the model's own memory. Parametric knowledge is treat
 
 ## When to reach for it
 
-In Pi, invoke it with `/skill:teach`. In Claude Code and harnesses where skills.sh installs bare commands, use `/teach`. The agent won't reach for it on its own.
+In Pi, invoke it with `/skill:teach <topic to learn>`, for example `/skill:teach TypeScript generics`. In Claude Code and harnesses where skills.sh installs bare commands, use the equivalent `/teach <topic>`. If you omit the topic, the agent asks what you want to learn. The agent won't reach for this skill on its own.
 
 Reach for it when you want to *learn* a topic over time — a language, a framework, yoga, theoretical physics — and want the sessions to accumulate rather than evaporate. It is not for a one-off explanation; if you just need something clarified in the moment, ask directly. Reach for `teach` when the learning is a project.
 
