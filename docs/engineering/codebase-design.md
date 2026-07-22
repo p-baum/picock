@@ -36,7 +36,7 @@ Callers and tests cross the same seam, so a well-placed interface gives tests so
 
 `codebase-design` is the **single source of truth** for the deep-module vocabulary, split out as its own model-invoked skill so anything can reach it. Other skills point at it rather than restating the words: [tdd](https://aihero.dev/skills-tdd) borrows it to place a seam before writing the test, [improve-codebase-architecture](https://aihero.dev/skills-improve-codebase-architecture) leans on it while restructuring existing code, and [to-spec](https://aihero.dev/skills-to-spec) speaks it when it sketches seams and deepening opportunities before writing a spec.
 
-The point of keeping it standalone is that you can also reach for it on its own — as a **reference** for how to think about module design — without triggering the larger process any of those skills mandate. Fix the words once, in one place, and every design conversation inherits them.
+The point of keeping it standalone is that you can also reach for it on its own — as a **reference** for how to think about module design — without triggering the larger process any of those skills mandate. Its design-it-twice pattern uses [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) in Pi (`pi install npm:@tintinweb/pi-subagents`) to produce independent alternatives in parallel, with isolated sequential passes as a degraded fallback. Fix the words once, in one place, and every design conversation inherits them.
 
 ## Where it fits
 
