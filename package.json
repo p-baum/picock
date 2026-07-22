@@ -1,15 +1,28 @@
 {
   "name": "mattpocock-skills",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "description": "Matt Pocock's agent skills for real engineering",
+  "keywords": [
+    "pi-package"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/mattpocock/skills"
   },
   "license": "MIT",
+  "pi": {
+    "skills": [
+      "./skills",
+      "!skills/deprecated/**",
+      "!skills/in-progress/**",
+      "!skills/misc/**",
+      "!skills/personal/**"
+    ]
+  },
   "scripts": {
     "changeset": "changeset",
+    "validate:skills": "node scripts/validate-skill-distribution.mjs",
     "version": "changeset version"
   },
   "devDependencies": {
