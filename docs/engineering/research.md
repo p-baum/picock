@@ -18,11 +18,11 @@ npx skills update research
 
 In Pi, invoke it with `/skill:research`. In Claude Code and harnesses where skills.sh installs bare commands, use `/research`. The agent can also reach for it automatically when a task turns into reading legwork.
 
-Reach for it when the next step is *finding something out* — how an API behaves, what a spec actually says, whether a claim holds — and you'd rather not stall your own thread doing the reading. For sharpening a plan by interview instead of by reading, use [grilling](https://aihero.dev/skills-grilling); for exploring what to build with throwaway code, use [prototype](https://aihero.dev/skills-prototype).
+Reach for it when the next step is *finding something out* — how an API behaves, what a spec actually says, whether a claim holds. For sharpening a plan by interview instead of by reading, use [grilling](https://aihero.dev/skills-grilling); for exploring what to build with throwaway code, use [prototype](https://aihero.dev/skills-prototype).
 
 ## Delegated legwork
 
-The defining move is that the reading runs as a **background agent**. You keep working; it goes off, follows each claim back to its primary source, and drops a single cited Markdown file into wherever the repo keeps such notes. Research is legwork you delegate, not thinking you outsource — you get back a document to react to, with its sources attached.
+The defining move is **primary-source legwork captured as an artifact**. When the harness provides background sub-agents, you can keep working while one follows each claim to its source. Without that tooling, the same research runs in the current session instead of pretending to be asynchronous. Either path drops a single cited Markdown file wherever the repo keeps such notes. Research is legwork you delegate, not thinking you outsource — you get back a document to react to, with its sources attached.
 
 ## Where it fits
 
