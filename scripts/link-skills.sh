@@ -15,16 +15,23 @@ set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
 
-# Collect promoted skills once, link into every destination. Draft, deprecated,
-# personal, and miscellaneous skills are intentionally not installed into agent
-# harness skill directories by this development helper.
+# Use the explicit Pi package manifest as the promoted-skill allowlist. This
+# keeps the development helper from exposing draft, deprecated, personal,
+# miscellaneous, or otherwise intentionally unpromoted skills.
 names=()
 srcs=()
-while IFS= read -r -d '' skill_md; do
-  src="$(dirname "$skill_md")"
+while IFS= read -r skill_path; do
+  src="$REPO/${skill_path#./}"
+  if [ ! -f "$src/SKILL.md" ]; then
+    echo "error: pi.skills entry has no SKILL.md: $skill_path" >&2
+    exit 1
+  fi
   names+=("$(basename "$src")")
   srcs+=("$src")
-done < <(find "$REPO/skills/engineering" "$REPO/skills/productivity" -name SKILL.md -not -path '*/node_modules/*' -print0)
+done < <(node -e '
+  const manifest = require(process.argv[1]);
+  for (const skill of manifest.pi?.skills ?? []) console.log(skill);
+' "$REPO/package.json")
 
 for DEST in "${DESTS[@]}"; do
   # If $DEST is a symlink that resolves into this repo, we'd end up writing the
