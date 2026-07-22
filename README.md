@@ -39,16 +39,26 @@ npx skills@latest add mattpocock/skills
 
 4. Bam - you're ready to go.
 
-## Install and invoke in Pi
+## Install, update, and invoke in Pi
 
-Install the repository as a Pi package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
+Pi users should install this repository as a Pi package rather than through skills.sh. Install the package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
 
 ```bash
 pi install git:github.com/mattpocock/skills
 pi install npm:@tintinweb/pi-subagents
 ```
 
-Restart Pi after installation. Pi registers skill commands as `/skill:<name>`, so run setup with `/skill:setup-matt-pocock-skills` and invoke any other skill the same way, for example `/skill:grill-with-docs`. Bare commands such as `/grill-with-docs` are for Claude Code and harnesses where skills.sh installs them; they do not invoke skills in Pi.
+The Pi package manifest discovers skills broadly while excluding the `deprecated`, `in-progress`, `misc`, and `personal` buckets. Skills in those excluded buckets, including `git-guardrails-pi`, are manual-only and are not installed with the package.
+
+Update unpinned Pi packages with:
+
+```bash
+pi update --extensions
+```
+
+After installing or updating, run `/reload` in an existing Pi session or restart Pi. Pi registers skill commands as `/skill:<name>`, so run setup with `/skill:setup-matt-pocock-skills` and invoke any other skill the same way, for example `/skill:grill-with-docs`.
+
+The `npx skills` commands elsewhere in these docs are explicitly for skills.sh-supported installation flows. Bare commands such as `/grill-with-docs` are for Claude Code and harnesses where skills.sh installs them; neither is the Pi package workflow.
 
 ## Install as a Claude Code plugin
 
