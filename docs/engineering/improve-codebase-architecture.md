@@ -16,7 +16,7 @@ npx skills update improve-codebase-architecture
 
 It does **not** hand you a flat list of refactors. Every candidate has to pass the **deletion test** — would removing this module *concentrate* complexity behind a smaller interface, or just move it around? Only the "concentrates" cases earn a card. That filter is what stops the report from becoming generic cleanup advice.
 
-Unless you point it at a specific area, it also scopes itself to where development is actually landing — reading the recent commits to bias toward the code you're still changing. Deepening a module pays off by making future changes to it easier, so it puts extra weight on the parts of the repo that have recently changed. It can delegate that scan to an exploration sub-agent when one exists, but it performs the same search directly when the harness has no sub-agent tooling.
+Unless you point it at a specific area, it also scopes itself to where development is actually landing — reading the recent commits to bias toward the code you're still changing. Deepening a module pays off by making future changes to it easier, so it puts extra weight on the parts of the repo that have recently changed. In Pi, [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) provides the read-only `Explore` agent used for that scan (`pi install npm:@tintinweb/pi-subagents`); without it, the skill performs the same search directly.
 
 ## When to reach for it
 

@@ -22,7 +22,7 @@ Reach for it when the next step is *finding something out* — how an API behave
 
 ## Delegated legwork
 
-The defining move is **primary-source legwork captured as an artifact**. When the harness provides background sub-agents, you can keep working while one follows each claim to its source. Without that tooling, the same research runs in the current session instead of pretending to be asynchronous. Either path drops a single cited Markdown file wherever the repo keeps such notes. Research is legwork you delegate, not thinking you outsource — you get back a document to react to, with its sources attached.
+The defining move is **primary-source legwork captured as an artifact**. In Pi, [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) (`pi install npm:@tintinweb/pi-subagents`) supplies the background `Agent` tool, so you can keep working while one follows each claim to its source. Without that tool, the same research runs in the current session instead of pretending to be asynchronous. Either path drops a single cited Markdown file wherever the repo keeps such notes. Research is legwork you delegate, not thinking you outsource — you get back a document to react to, with its sources attached.
 
 ## Where it fits
 

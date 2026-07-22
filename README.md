@@ -41,10 +41,11 @@ npx skills@latest add mattpocock/skills
 
 ## Install and invoke in Pi
 
-Install the repository as a Pi package:
+Install the repository as a Pi package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
 
 ```bash
 pi install git:github.com/mattpocock/skills
+pi install npm:@tintinweb/pi-subagents
 ```
 
 Restart Pi after installation. Pi registers skill commands as `/skill:<name>`, so run setup with `/skill:setup-matt-pocock-skills` and invoke any other skill the same way, for example `/skill:grill-with-docs`. Bare commands such as `/grill-with-docs` are for Claude Code and harnesses where skills.sh installs them; they do not invoke skills in Pi.

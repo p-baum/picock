@@ -8,7 +8,7 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Spec** — does the code faithfully implement the originating issue / PRD / spec?
 
-Run both axes in **independent review passes**, then aggregate their findings. Use parallel sub-agents when the harness provides them; otherwise preserve the separation with isolated sequential passes.
+Run both axes in **independent review passes**, then aggregate their findings. In Pi, use the [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) extension to provide Claude-compatible parallel `Agent` calls. If no sub-agent system is installed, preserve the separation with isolated sequential passes.
 
 The issue tracker should have been provided to you — ask the user to run the `setup-matt-pocock-skills` skill if `docs/agents/issue-tracker.md` is missing.
 
@@ -59,8 +59,8 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 
 First inspect the available tools.
 
-- **Sub-agent tool available:** launch one Standards reviewer and one Spec reviewer in parallel, each with an independent context. Tool names and parameters vary by harness; use the harness's documented sub-agent mechanism rather than assuming an `Agent` or `Task` tool exists.
-- **No sub-agent tool:** tell the user that sub-agents are unavailable and run the passes sequentially. Before each pass, write its brief to a separate temporary note. During the pass, read only the diff plus that axis's sources, and write findings to that axis's note before beginning the other pass. Do not revise the first note during the second pass. Delete both temporary notes after aggregation.
+- **`Agent` tool available:** send a single message containing two parallel `Agent` calls with `subagent_type: "general-purpose"`, one for Standards and one for Spec. In Pi, this tool is supplied by [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents); if it is missing, tell the user they can install it with `pi install npm:@tintinweb/pi-subagents` and restart Pi.
+- **No `Agent` tool:** tell the user that the review will use a degraded sequential mode, then run the passes sequentially. Before each pass, write its brief to a separate temporary note. During the pass, read only the diff plus that axis's sources, and write findings to that axis's note before beginning the other pass. Do not revise the first note during the second pass. Delete both temporary notes after aggregation.
 
 **Standards pass brief** — include:
 

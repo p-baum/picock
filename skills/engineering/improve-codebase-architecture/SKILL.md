@@ -24,7 +24,7 @@ This command is _informed_ by the project's domain model and built on a shared d
 
 Read the project's domain glossary (`CONTEXT.md`) and any ADRs in the area you're touching first.
 
-Walk the codebase organically and note where you experience friction. If the harness provides a read-only exploration sub-agent, delegate the scan to it; otherwise perform the same scan directly with file search and read tools. A sub-agent is an optimisation, not a requirement.
+Walk the codebase organically and note where you experience friction. In Pi, use the `Explore` agent supplied by [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents): call `Agent` with `subagent_type: "Explore"`. If the `Agent` tool is missing, tell the user they can install it with `pi install npm:@tintinweb/pi-subagents` and restart Pi, then perform the same scan directly with file search and read tools for this run.
 
 - Where does understanding one concept require bouncing between many small modules?
 - Where are modules **shallow** — interface nearly as complex as the implementation?
