@@ -22,29 +22,14 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
 
-## Install with skills.sh (Claude Code and other supported harnesses)
-
-1. Run the skills.sh installer:
-
-```bash
-npx skills@latest add mattpocock/skills
-```
-
-2. Pick the skills you want, and which coding agents you want to install them on. **Make sure you select `setup-matt-pocock-skills`**.
-
-3. In Claude Code and harnesses where skills.sh installs bare commands, run `/setup-matt-pocock-skills` in your agent. It will:
-   - Ask you which issue tracker you want to use (GitHub, Linear, or local files)
-   - Ask you what labels you apply to tickets when you triage them (the `triage` skill uses labels)
-   - Ask you where you want to save any docs we create
-
-4. Bam - you're ready to go.
-
 ## Install, update, and invoke in Pi
 
-Pi users should install this repository as a Pi package rather than through skills.sh. Install the package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
+This fork is distributed for Pi. It is not intended to be installed into Claude Code, and Claude Code plugin references from upstream can be ignored for this fork.
+
+Install the package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
 
 ```bash
-pi install git:github.com/mattpocock/skills
+pi install git:github.com/p-baum/picock
 pi install npm:@tintinweb/pi-subagents
 ```
 
@@ -58,34 +43,7 @@ pi update --extensions
 
 After installing or updating, run `/reload` in an existing Pi session or restart Pi. Pi registers skill commands as `/skill:<name>`, so run setup with `/skill:setup-matt-pocock-skills` and invoke any other skill the same way, for example `/skill:grill-with-docs`.
 
-The `npx skills` commands elsewhere in these docs are explicitly for skills.sh-supported installation flows. Bare commands such as `/grill-with-docs` are for Claude Code and harnesses where skills.sh installs them; neither is the Pi package workflow.
-
-## Install as a Claude Code plugin
-
-Prefer a plug-and-play install you don't maintain by hand? These skills also ship as a native [Claude Code plugin](https://code.claude.com/docs/en/plugins). Instead of copying editable files into your repo, the plugin installs the whole skill set as a managed bundle that updates when I ship a new version — you subscribe rather than fork.
-
-Inside Claude Code:
-
-```
-/plugin marketplace add mattpocock/skills
-/plugin install mattpocock-skills@mattpocock
-```
-
-Or from your shell:
-
-```bash
-claude plugin marketplace add mattpocock/skills
-claude plugin install mattpocock-skills@mattpocock
-```
-
-Then run `/setup-matt-pocock-skills` once per repo in Claude Code, exactly as in the skills.sh setup above.
-
-Two ways to install, two philosophies:
-
-- **[skills.sh](https://skills.sh/mattpocock/skills)** copies the skills into your project so you can hack on them and make them your own.
-- **The plugin** keeps them as a read-only, always-current bundle you don't edit — best when you just want my set to work and follow along as it evolves.
-
-> Using Codex or another agent? The [skills.sh installer](https://skills.sh/mattpocock/skills) already installs these skills into Codex and other Agent-Skills-standard harnesses today. A native Codex plugin is on the roadmap — see [`.agents/adr/0002-ship-as-a-claude-code-plugin.md`](./.agents/adr/0002-ship-as-a-claude-code-plugin.md).
+The `npx skills` commands elsewhere in these docs are explicitly for skills.sh-supported installation flows. Bare commands such as `/grill-with-docs` are for harnesses where skills.sh installs them; neither is the Pi package workflow.
 
 ## Why These Skills Exist
 
