@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Bring the fork up to date without washing away its Pi adaptations. The defining idea is a **compatibility gate**: upstream is not ready to merge until every incoming change has been checked against the fork's Pi distribution and harness behavior.
 
-This skill is specific to the `p-baum/picock` fork of `mattpocock/skills`. Use `GH_TOKEN="$PI_GITHUB_PAT" gh ...` when GitHub CLI authentication needs the fork owner's token.
+This skill is specific to the `p-baum/picock` fork of `mattpocock/skills`. The fork is distributed for Pi, not Claude Code; upstream Claude Code plugin references are not a compatibility target and can be ignored or removed when they conflict with Pi-facing docs. Use `GH_TOKEN="$PI_GITHUB_PAT" gh ...` when GitHub CLI authentication needs the fork owner's token.
 
 ## 1. Establish the sync range
 
@@ -25,7 +25,7 @@ Completion criterion: the exact upstream commit range and both endpoint SHAs are
 
 - Create a fresh branch from `origin/<default>` named `sync/upstream-<YYYY-MM-DD>`, adding a numeric suffix if it already exists.
 - Merge `upstream/<default>` into it with a merge commit so upstream provenance remains visible. Preserve fork-specific behavior when resolving conflicts; use the `resolving-merge-conflicts` skill when conflicts occur.
-- Run the repository's relevant validation, including `npm run validate:skills`. After manifest changes, also run `claude plugin validate . --strict` when the command is available.
+- Run the repository's relevant Pi validation, including `npm run validate:skills`. Do not run or require Claude Code plugin validation; this fork is not installed into Claude Code.
 - Push the branch to `origin` and open a draft PR against the fork's default branch. The body must include the upstream range, endpoint SHAs, conflict resolutions, and validation results.
 
 The PR stays draft until the compatibility gate is complete. Never merge it.
@@ -39,9 +39,9 @@ Audit only behavior introduced or changed by the upstream range, while reading e
 Check every changed skill and distribution surface against:
 
 - Pi skill discovery in `package.json`, including promoted and excluded buckets.
-- `.claude-plugin/plugin.json`, top-level and bucket READMEs, docs pages, and `ask-matt` routing.
+- Top-level and bucket READMEs, docs pages, and `ask-matt` routing. Ignore `.claude-plugin/*` except where a change would accidentally leak into Pi-facing docs or validation.
 - `scripts/link-skills.sh` and `scripts/validate-skill-distribution.mjs`.
-- Invocation differences: Pi `/skill:<name>`, bare commands in Claude/skills.sh harnesses, frontmatter, and `agents/openai.yaml`.
+- Invocation differences: Pi `/skill:<name>`, bare commands in skills.sh harnesses, frontmatter, and `agents/openai.yaml`.
 - Tool assumptions, especially Claude-only tools, sub-agent APIs, hooks, browser access, filesystem locations, and authentication.
 - Existing Pi compatibility adaptations and their intent, using repository history and `docs/pi-compatibilty-review.md` as evidence. Treat the review as historical context, not current truth.
 - The `setup-matt-pocock-skills` workflow whenever an incoming change affects installation, setup, discovery, or per-repo configuration.
