@@ -1,20 +1,13 @@
-Install with skills.sh:
 
-```bash
-npx skills add mattpocock/skills --skill=research
-```
-
-```bash
-npx skills update research
-```
-
-[Source](https://github.com/mattpocock/skills/tree/main/skills/engineering/research)
 
 ## What it does
 
-`research` answers a question by reading the sources that own the answer and leaving a cited Markdown file behind. It works only from **primary sources** — official docs, source code, specs, first-party APIs — never a secondary write-up of them, so what it saves is traceable back to something authoritative rather than a summary of a summary.
+`research` answers a question by reading the sources that own the answer, then leaves a cited Markdown file in the repo. It works only from **[primary sources](https://www.aihero.dev/ai-coding-dictionary/primary-source)** — official docs, source code, specs, first-party APIs — and follows every claim back to the source that owns it, so it will not repeat a blog post's account of an API when the API's own docs are reachable.
+
+It does not answer you in the conversation. The output is a file, written where the repo already keeps such notes, with a link on each claim. That is the point: a document you can react to, hand to another agent, or throw away, rather than an answer that vanishes when the [session](https://www.aihero.dev/ai-coding-dictionary/session) ends.
 
 ## When to reach for it
+
 
 In Pi, invoke it with `/skill:research`. In Claude Code and harnesses where skills.sh installs bare commands, use `/research`. The agent can also reach for it automatically when a task turns into reading legwork.
 
@@ -24,6 +17,7 @@ Reach for it when the next step is *finding something out* — how an API behave
 
 The defining move is **primary-source legwork captured as an artifact**. In Pi, [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) (`pi install npm:@tintinweb/pi-subagents`) supplies the background `Agent` tool, so you can keep working while one follows each claim to its source. Without that tool, the same research runs in the current session instead of pretending to be asynchronous. Either path drops a single cited Markdown file wherever the repo keeps such notes. Research is legwork you delegate, not thinking you outsource — you get back a document to react to, with its sources attached.
 
+
 ## Where it fits
 
-A reach-for-it-anytime standalone that feeds the thinking skills: the file it produces is something to grill, plan, or design against, so it sits upstream of work like [grilling](https://aihero.dev/skills-grilling) and [to-prd](https://aihero.dev/skills-to-prd) rather than in the build chain. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+A reach-for-it-anytime standalone that feeds the thinking skills rather than sitting in the build chain. Its file is something to take *into* the flow: [grilling](https://aihero.dev/skills-grilling) and [grill-with-docs](https://aihero.dev/skills-grill-with-docs) ask sharper questions when the facts are already on the table, and [to-spec](https://aihero.dev/skills-to-spec) can synthesise against it. [wayfinder](https://aihero.dev/skills-wayfinder) is the one skill that invokes it directly, resolving each research ticket on its map with a `/research` subagent. For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
