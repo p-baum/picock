@@ -1,15 +1,3 @@
-Install with skills.sh:
-
-```bash
-npx skills add p-baum/picock --skill=sync-upstream
-```
-
-```bash
-npx skills update sync-upstream
-```
-
-[Source](https://github.com/p-baum/picock/tree/main/skills/engineering/sync-upstream)
-
 ## What it does
 
 `sync-upstream` brings changes from `mattpocock/skills` into the `p-baum/picock` fork and opens a draft sync pull request. It treats Pi compatibility as a gate: upstream changes are classified before the sync is declared ready, and confirmed gaps become linked issue/PR pairs rather than notes left for later.
