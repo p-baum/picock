@@ -26,7 +26,7 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 This fork is distributed for Pi. It is not intended to be installed into Claude Code, and Claude Code plugin references from upstream can be ignored for this fork.
 
-Install the package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
+Install the package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the `Agent` tools used by parallel review, exploration, design, and research workflows:
 
 ```bash
 pi install git:github.com/p-baum/picock
@@ -47,7 +47,7 @@ The `npx skills` commands elsewhere in these docs are explicitly for skills.sh-s
 
 ## Why These Skills Exist
 
-I built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.
+I built these skills as a way to fix common failure modes I see with Pi and other coding agents.
 
 ### #1: The Agent Didn't Do What I Want
 
@@ -147,7 +147,7 @@ Software engineering fundamentals matter more than ever. These skills are my bes
 
 ## Reference
 
-These split on one axis — who can invoke them. **User-invoked** skills are reachable only when you invoke them (in Pi, `/skill:grill-me`; in Claude Code and skills.sh-installed harnesses, `/grill-me`); their job is to orchestrate. **Model-invoked** skills can be invoked by you with the same harness-specific syntax _or_ reached for automatically by the agent when the task fits; they hold the reusable discipline. A user-invoked skill may invoke model-invoked skills, but never another user-invoked one.
+These split on one axis — who can invoke them. **User-invoked** skills are reachable only when you invoke them (in Pi, `/skill:grill-me`; in skills.sh-installed harnesses, `/grill-me`); their job is to orchestrate. **Model-invoked** skills can be invoked by you with the same harness-specific syntax _or_ reached for automatically by the agent when the task fits; they hold the reusable discipline. A user-invoked skill may invoke model-invoked skills, but never another user-invoked one.
 
 ### Engineering
 
