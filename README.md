@@ -26,14 +26,13 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 This fork is distributed for Pi. It is not intended to be installed into Claude Code, and Claude Code plugin references from upstream can be ignored for this fork.
 
-Install the package, plus [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows:
+Install the package:
 
 ```bash
 pi install git:github.com/p-baum/picock
-pi install npm:@tintinweb/pi-subagents
 ```
 
-The Pi package manifest discovers skills broadly while excluding the `deprecated`, `in-progress`, `misc`, and `personal` buckets. Skills in those excluded buckets, including `git-guardrails-pi`, are manual-only and are not installed with the package.
+The Pi package includes the promoted skills, the `questionnaire` extension used to present grill-me question rounds interactively, and [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents) for the Claude-compatible `Agent` tools used by parallel review, exploration, design, and research workflows. Its manifest discovers skills broadly while excluding the `deprecated`, `in-progress`, `misc`, and `personal` buckets. Skills in those excluded buckets, including `git-guardrails-pi`, are manual-only and are not installed with the package.
 
 Update unpinned Pi packages with:
 
@@ -44,6 +43,34 @@ pi update --extensions
 After installing or updating, run `/reload` in an existing Pi session or restart Pi. Pi registers skill commands as `/skill:<name>`, so run setup with `/skill:setup-matt-pocock-skills` and invoke any other skill the same way, for example `/skill:grill-with-docs`.
 
 The `npx skills` commands elsewhere in these docs are explicitly for skills.sh-supported installation flows. Bare commands such as `/grill-with-docs` are for harnesses where skills.sh installs them; neither is the Pi package workflow.
+
+### Migrating from the old symlink install
+
+Older local installs used `scripts/link-skills.sh` to symlink individual skills into harness skill directories. On a machine with that old setup:
+
+1. Remove the old symlinks from your local skill directory, for example `~/.agents/skills`, if you used that script.
+2. Install this repo as one Pi package:
+
+   ```bash
+   pi install git:github.com/p-baum/picock
+   ```
+
+3. If you previously installed a local path while developing, replace the git source with the local package path instead:
+
+   ```bash
+   pi install /path/to/picock
+   ```
+
+4. Restart Pi, or run `/reload` in an existing session.
+5. Invoke skills with Pi's syntax, for example `/skill:grill-me`, not the old bare `/grill-me` command.
+
+If `npm:@tintinweb/pi-subagents` is already installed separately, you can remove that separate package after updating because Picock now brings it with the package:
+
+```bash
+pi remove npm:@tintinweb/pi-subagents
+```
+
+After this migration, use `pi update --extensions` to update the Picock package instead of re-running the symlink script.
 
 ## Why These Skills Exist
 
