@@ -48,9 +48,9 @@ Check every changed skill and distribution surface against:
 
 Classify every changed file as:
 
-1. **Compatible** — no fork adaptation required.
-2. **Already adapted** — existing fork behavior still covers it.
-3. **Remediation required** — Pi would lose functionality, receive incorrect instructions, or diverge from the repository's distribution policy.
+1. **Compatible**: no fork adaptation required.
+2. **Already adapted**: existing fork behavior still covers it.
+3. **Remediation required**: Pi would lose functionality, receive incorrect instructions, or diverge from the repository's distribution policy.
 
 Write this file-by-file audit into the draft sync PR body. Every changed file must have a classification and evidence; a general impression is not a completed audit.
 
